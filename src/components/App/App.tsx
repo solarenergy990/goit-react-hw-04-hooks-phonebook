@@ -9,17 +9,14 @@ import useLocalStorage from '../../hooks/useLocalStorage';
 
 // import Contact from '../../interfaces/Contact.interface'
 
-type Data = {
-  name: string;
-  number: string;
-};
+
 
 const App = () => {
   const [contacts, setContacts] = useLocalStorage('contacts', initialContacts);
   const [filter, setFilter] = useState('');
 
-  const addContact = (data: Data) => {
-    const { name, number } = data;
+  const addContact = (name: string, number: string) => {
+    
 
     const contact = {
       id: shortid.generate(),

@@ -3,11 +3,15 @@ import PropTypes from 'prop-types';
 
 import s from './ContactForm.module.css';
 
-const ContactForm = ({ onSubmit }) => {
+interface Props {
+  onSubmit: (name: string, number: string) => void;
+}
+
+const ContactForm = ({ onSubmit }: Props) => {
   const [name, setName] = useState('');
   const [number, setNumber] = useState('');
 
-  const handleChange = evt => {
+  const handleChange = (evt: React.ChangeEvent<HTMLInputElement>) => {
     const { value } = evt.target;
 
     if (evt.currentTarget.name === 'name') {
@@ -18,10 +22,10 @@ const ContactForm = ({ onSubmit }) => {
     }
   };
 
-  const handleSubmit = evt => {
+  const handleSubmit = (evt: React.FormEvent<HTMLFormElement>) => {
     evt.preventDefault();
 
-    onSubmit({ name, number });
+    onSubmit(name, number);
 
     reset();
   };
