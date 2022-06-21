@@ -1,8 +1,14 @@
 import React from 'react';
-import PropTypes from 'prop-types';
+
 import s from './ContactListItem.module.css';
 
-const ContactListItem = ({ contactName, contactNumber, onClickRemove }) => {
+interface Props {
+  contactName: string;
+  contactNumber: string
+  onClickRemove: React.MouseEventHandler<HTMLButtonElement>;
+}
+
+const ContactListItem = ({ contactName, contactNumber, onClickRemove }: Props) => {
   return (
     <li className={s.listItem}>
       <p className={s.listText}>
@@ -17,8 +23,4 @@ const ContactListItem = ({ contactName, contactNumber, onClickRemove }) => {
 
 export default ContactListItem;
 
-ContactListItem.propTypes = {
-  contactName: PropTypes.string.isRequired,
-  contactNumber: PropTypes.string.isRequired,
-  onClickRemove: PropTypes.func.isRequired,
-};
+

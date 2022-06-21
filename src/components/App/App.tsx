@@ -7,11 +7,18 @@ import shortid from 'shortid';
 
 import useLocalStorage from '../../hooks/useLocalStorage';
 
+// import Contact from '../../interfaces/Contact.interface'
+
+type Data = {
+  name: string;
+  number: string;
+};
+
 const App = () => {
   const [contacts, setContacts] = useLocalStorage('contacts', initialContacts);
   const [filter, setFilter] = useState('');
 
-  const addContact = data => {
+  const addContact = (data: Data) => {
     const { name, number } = data;
 
     const contact = {
@@ -33,12 +40,12 @@ const App = () => {
     }
   };
 
-  const deleteContact = contactId => {
+  const deleteContact = (contactId: string) => {
     setContacts(contacts.filter(contact => contact.id !== contactId));
   };
 
-  const changeFilter = evt => {
-    setFilter(evt.currentTarget.value);
+  const changeFilter = (evt: React.ChangeEvent<HTMLInputElement>) => {
+    setFilter(evt.target.value);
   };
 
   const getVisibleContacts = () => {

@@ -1,8 +1,13 @@
 import React from 'react';
-import PropTypes from 'prop-types';
+
 import s from './Filter.module.css';
 
-const Filter = ({ value, onChange }) => {
+interface Props {
+  value: string;
+  onChange: React.ChangeEventHandler<HTMLInputElement>
+}
+
+const Filter = ({ value, onChange }: Props) => {
   return (
     <label>
       <p className={s.label}>Find contacts by name</p>
@@ -18,11 +23,4 @@ const Filter = ({ value, onChange }) => {
 
 export default Filter;
 
-Filter.defaultProps = {
-  value: '',
-};
 
-Filter.propTypes = {
-  value: PropTypes.string,
-  onChange: PropTypes.func.isRequired,
-};
